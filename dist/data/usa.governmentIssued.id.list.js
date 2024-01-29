@@ -1,0 +1,22 @@
+export var USAGovernmentIssuedID;
+(function (USAGovernmentIssuedID) {
+    USAGovernmentIssuedID["DriverLicense"] = "Driver License";
+    USAGovernmentIssuedID["StateID"] = "State ID";
+    USAGovernmentIssuedID["Passport"] = "Passport";
+    USAGovernmentIssuedID["SocialSecurityCard"] = "Social Security Card";
+    USAGovernmentIssuedID["MilitaryID"] = "Military ID";
+    USAGovernmentIssuedID["GreenCard"] = "Green Card";
+    USAGovernmentIssuedID["EmploymentAuthorizationCard"] = "Employment Authorization Card";
+    USAGovernmentIssuedID["RealID"] = "Real ID";
+    USAGovernmentIssuedID["TWICCard"] = "Transportation Worker Identification Credential (TWIC)";
+    USAGovernmentIssuedID["DACAID"] = "Deferred Action for Childhood Arrivals (DACA) ID";
+    USAGovernmentIssuedID["H1BVisa"] = "H-1B Visa";
+    USAGovernmentIssuedID["H2BVisa"] = "H-2B Visa";
+    USAGovernmentIssuedID["J1Visa"] = "J-1 Visa";
+    USAGovernmentIssuedID["F1Visa"] = "F-1 Visa";
+    USAGovernmentIssuedID["M1Visa"] = "M-1 Visa";
+    USAGovernmentIssuedID["I20Form"] = "Form I-20";
+    USAGovernmentIssuedID["DS2019Form"] = "Form DS-2019";
+    USAGovernmentIssuedID["I797Form"] = "Form I-797";
+    USAGovernmentIssuedID["SSN"] = "Social Security Number";
+})(USAGovernmentIssuedID || (USAGovernmentIssuedID = {}));

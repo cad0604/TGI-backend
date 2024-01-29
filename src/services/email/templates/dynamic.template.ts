@@ -1,0 +1,87 @@
+/*******************************************************************************
+ * Copyright (c) iamsouravganguli 2023.
+ * @author Sourav Ganguli <mysganguli@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ ******************************************************************************/
+import { Template } from './types.js';
+import { Nodemailer } from '../../../vendor/index.js';
+
+export namespace DynamicTemplates {
+  export const Authentication = {
+    forgotPassword: async (option: Template.Options) => {
+      try {
+        const res = await Nodemailer.sendMail({
+          to: option?.email as string,
+          from: '"no-reply" <admin@tgiscaleme.com>',
+          subject: ' 🎉Password Reset Link ',
+          html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Password Reset</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h2>Password Reset Request</h2>
+
+<p>Dear [User's Name],</p>
+
+<p>We received a request to reset your password. If you did not make this request, please ignore this email. Otherwise, click on the link below to reset your password:</p>
+
+<p><a href="${option.sessionLink}">Reset Your Password</a></p>
+
+<p>This link is valid for the next [expiration time, e.g., 24 hours].</p>
+
+<p>If you have any issues or need further assistance, please contact our support team at [Your Support Email] or [Your Support Phone Number].</p>
+
+<p>Thank you!</p>
+
+<p>Best regards,<br>
+    [Your Full Name]<br>
+    [Your Position]<br>
+    [Your Company Name]</p>
+</body>
+</html>
+`,
+        });
+        if (res.response.substring(0, 3) === '250') {
+          return Promise.resolve(true);
+        }
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    },
+  };
+  const AccountCreated = {
+    success: async (options: Template.Options) => {},
+    fail: async (options: Template.Options) => {},
+  };
+}
